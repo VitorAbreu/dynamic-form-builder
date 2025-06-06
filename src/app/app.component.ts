@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
   `,
   styles: [],
 })
