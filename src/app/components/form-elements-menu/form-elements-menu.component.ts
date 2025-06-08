@@ -1,17 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { FieldTypesService } from '@services/field-types.service';
 import { FieldButtonComponent } from './field-button/field-button.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-form-elements-menu',
-  imports: [FieldButtonComponent],
+  imports: [FieldButtonComponent, DragDropModule],
   template: `
     <div class="p-4 bg-white rounded-lg h-[calc(100vh-150px)] overflow-y-auto border-gray-200 shadow-sm flex flex-col gap-4">
-      <h3 class="text-xl font-medium">Form Elements</h3>
+      <h3 class="text-xl font-medium mb-4">Form Elements</h3>
 
-      @for (fieldType of fieldTypes; track fieldType.type) {
-        <app-field-button [field]="fieldType" />
-      }
+      <div class="flex flex-col gap-4" cdkDropList cdkDropListSortingDisabled="true" [cdkDropListData]="'field-selector'">
+        @for (fieldType of fieldTypes; track fieldType.type) {
+          <app-field-button [field]="fieldType" />
+        }
+      </div>
     </div>
   `,
   styles: ``,
