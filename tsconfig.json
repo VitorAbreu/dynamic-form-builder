@@ -21,7 +21,8 @@
       "@components/*": ["./src/app/components/*"],
       "@models/*": ["./src/app/models/*"],
       "@services/*": ["./src/app/services/*"]
-    }
+    },
+    "typeRoots": ["node_modules/@types"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

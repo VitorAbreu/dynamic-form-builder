@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { CheckboxFieldComponent } from '@components/field-types/checkbox-field/checkbox-field.component';
+import { TextFieldComponent } from '@components/field-types/text-field/text-field.component';
 import { iFieldTypeDefinition } from '@models/field-types.interface';
 
 const TEXT_FIELD_DEFINITION = {
@@ -9,6 +11,7 @@ const TEXT_FIELD_DEFINITION = {
     label: 'Text Field',
     required: false,
   },
+  component: TextFieldComponent,
 };
 
 const CHECKBOX_FIELD_DEFINITION = {
@@ -19,6 +22,7 @@ const CHECKBOX_FIELD_DEFINITION = {
     label: 'Checkbox',
     required: false,
   },
+  component: CheckboxFieldComponent,
 };
 
 @Injectable({
@@ -29,6 +33,10 @@ export class FieldTypesService {
     ['text', TEXT_FIELD_DEFINITION],
     ['checkbox', CHECKBOX_FIELD_DEFINITION],
   ]);
+
+  getFieldType(type: string): iFieldTypeDefinition | undefined {
+    return this.fieldTypes.get(type);
+  }
 
   getAllFieldTypes(): iFieldTypeDefinition[] {
     return Array.from(this.fieldTypes.values());

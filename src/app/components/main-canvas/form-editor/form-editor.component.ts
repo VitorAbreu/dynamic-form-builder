@@ -2,10 +2,11 @@ import { CdkDragDrop, DragDropModule } from '@angular/cdk/drag-drop';
 import { Component, inject } from '@angular/core';
 import { FormField, iFieldTypeDefinition } from '@models/field-types.interface';
 import { FormService } from '@services/form.service';
+import { FormFieldComponent } from '../form-field/form-field.component';
 
 @Component({
   selector: 'app-form-editor',
-  imports: [DragDropModule],
+  imports: [DragDropModule, FormFieldComponent],
   template: `
     <div class="p-4">
       @for (row of formRows(); track row.id) {
@@ -13,7 +14,7 @@ import { FormService } from '@services/form.service';
           <div>Row</div>
           <div class="flex gap-4 flex-wrap">
             @for (field of row.fields; track field.id) {
-              <div class="flex-1">{{ field.label }}</div>
+              <app-form-field class="flex-1" [field]="field" />
             }
           </div>
         </div>
